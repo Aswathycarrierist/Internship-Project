@@ -2,15 +2,32 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.wait import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.service import Service
+
+
 
 from app.application import Application
 def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
+    # driver_path = ChromeDriverManager().install()
+    # service = Service(driver_path)
+    # context.driver = webdriver.Chrome(service=service)
+    #chrome headless
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('headless')
+    # service = Service(ChromeDriverManager().install())
+    # context.driver = webdriver.Chrome(
+    #     options=options,
+    #     service=service
+    # )
+# firefox
+
+    driver_path = GeckoDriverManager().install()
     service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+    context.driver = webdriver.Firefox(service=service)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
