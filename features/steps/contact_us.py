@@ -40,17 +40,25 @@ def click_settings(context):
     sleep(5)
 
 
+@when('Click on profile icon')
+def click_settings(context):
+    context.app.contact_us_page.click_profile_icon()
+    sleep(5)
+
+
 # "[href='/settings']")
 
-@when('Click on Contact us option')
+@when('Click on Contact us')
 def click_contact_us(context):
-    context.app.contact_us_page.click_contact_us_option()
+    sleep(5)
+    context.app.contact_us_page.click_contact_us()
 
     # context.driver.find_element(By.CSS_SELECTOR, ".page-setting-block.w-inline-block[href='/contact-us']").click()
 
 
 @when('Verify contact us page opened')
 def verify_contact_us_page(context):
+    sleep(5)
     expected_text = 'Join us in social media'
     context.app.contact_us_page.verify_contact_us(expected_text)
 
@@ -71,3 +79,9 @@ def verify_connect_the_company_button(context):
     context.app.contact_us_page.verify_connect_the_company_button()
     #context.driver.wait.until(
       #  EC.element_to_be_clickable((By.CSS_SELECTOR, "[href='/payment/personal']")))
+
+
+@when("Click on main menu")
+def click_on_main_menu(context):
+    sleep(5)
+    context.app.main_page.click_main_menu()
